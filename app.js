@@ -56,7 +56,7 @@ seedDB();
 */
 
 mongoose.connect( "mongodb+srv://yasinosman:123**saatkac123@blog-app-wx0nf.mongodb.net/test?retryWrites=true&w=majority",
-{ useNewUrlParser: true, useUnifiedTopology: false }, 
+{ useNewUrlParser: true, useUnifiedTopology: true }, 
 () => { console.log("we are connected")}).catch(err => console.log(err));
 
 
