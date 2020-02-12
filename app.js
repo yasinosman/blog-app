@@ -221,6 +221,6 @@ app.post("/register", function(req, res){
 
 
 //Express listener
-app.listen(port, process.env.IP, function(){
+app.listen(process.env.PORT || 5000, process.env.IP, function(){
     console.log(`Example app listening on port ${port}!`);
 });
