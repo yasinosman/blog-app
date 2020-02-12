@@ -1,0 +1,47 @@
+<%- include ("./../partials/header") %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header"><%= blog.title %></div>
+
+    <div class="ui top attached">
+        <div class="item">
+            <img class="ui centered rounded image" src="<%=blog.image%>">
+            
+            <div class="content">
+                <span><%=blog.created.toDateString()%></span>
+            </div>
+
+            <div class="description">
+                <p><%-blog.body%></p>
+            </div>
+            <a class="ui blue basic button" href="/blogs/<%=blog._id%>/edit">Edit</a>
+            <form action="/blogs/<%=blog._id%>?_method=DELETE" method="POST" id="delete">
+                <button class="ui red basic button">Delete</button>
+            </form>
+        </div>
+    </div>
+    <!--Comments-->
+    <div class="ui container segment comments">
+      <h2 class="ui dividing header">Comments</h2>
+      <% blog.comments.forEach(function(comment){ %>
+        <div class="comment">
+          <div class="content">
+            <a class="author"><%= comment.author %></a>
+            <div class="metadata">
+              <span class="date"><%= comment.created.toDateString() %></span>
+            </div>
+            <div class="text">
+                <%= comment.text %>
+            </div>
+          </div>
+        </div>
+      <% });  %> 
+      <form class="ui reply form">
+        <div class="ui blue basic submit icon button">
+          <a href="/blogs/<%=blog._id%>/comments/new"><i class="icon edit"></i> Add a Comment!</a>
+        </div>
+      </form>
+    </div>
+</div>
+
+<%- include ("./../partials/footer") %>

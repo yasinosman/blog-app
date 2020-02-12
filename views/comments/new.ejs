@@ -1,0 +1,21 @@
+<%- include("./../partials/header") %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">
+        Add a New Comment to <%=blog.title%>
+    </div>
+
+    <form class="ui form" action="/blogs/<%=blog._id%>/comments" method="POST">
+        <div class="field">
+            <label>Author:</label>
+            <input required type="text" name="comment[author]" placeholder="Author">
+        </div>
+        <div class="field">
+            <label>Your Comment:</label>
+            <textarea required name="comment[text]" placeholder="Your comment"></textarea>
+        </div>
+        <input class="ui black basic button" type="submit">
+    </form>
+</div>
+
+<%- include("./../partials/footer") %>
