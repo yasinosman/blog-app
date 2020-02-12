@@ -50,7 +50,7 @@ seedDB();
 mongoose.connect("mongodb+srv://yasinosman:123**saatkac123@blog-app-wx0nf.mongodb.net/test?retryWrites=true&w=majority", 
     {   
         useNewUrlParser: true,
-        useUnifiedTopology: true 
+        useUnifiedTopology: false 
     }
 );
 //mongodb+srv://yasinosman:123**saatkac123@blog-app-wx0nf.mongodb.net/test?retryWrites=true&w=majority
