@@ -40,12 +40,20 @@ app.use(methodOverride("_method"));
 seedDB();
 
 //Mongodb connection
-mongoose.connect("mongodb://localhost/cydd-kutuphane-app", 
+/*mongoose.connect("mongodb://localhost/cydd-kutuphane-app", 
     {   
         useNewUrlParser: true,
         useUnifiedTopology: true 
     }
 );
+*/
+mongoose.connect("mongodb+srv://yasinosman:123**saatkac123@blog-app-wx0nf.mongodb.net/test?retryWrites=true&w=majority", 
+    {   
+        useNewUrlParser: true,
+        useUnifiedTopology: true 
+    }
+);
+//mongodb+srv://yasinosman:123**saatkac123@blog-app-wx0nf.mongodb.net/test?retryWrites=true&w=majority
 
 //BLOG ROUTES  
 //--------------------------------------------------
