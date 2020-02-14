@@ -5,3 +5,15 @@
 #delete{
     display:inline;
 }
+
+a{
+    color:inherit;
+}
+
+body {
+    background-color: #ECF0F1;
+  }
+
+#commentDelete{
+    display:inline;
+}

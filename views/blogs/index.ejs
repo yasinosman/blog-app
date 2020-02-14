@@ -21,6 +21,9 @@
                         <div class="description">
                             <p><%-blog.body.substring(0, 100)%>...</p>
                         </div>
+                        <div class="description">
+                            Blog submitted by: <strong><%=blog.author.username%></strong>
+                        </div>
                         <div class="extra">
                             <a class="ui floated basic black button" href="/blogs/<%=blog._id%>">
                                 Read More

@@ -13,6 +13,23 @@
                 </div>
                 <a href="/" class="item">Home</a>
                 <a href="/blogs/new" class="item">New Post</a>
+                
+<!--Authentication part-->
+                <%  if(!currentUser){   %>
+                <div class="item right">
+                    <a href="/register"><div class="ui primary button">Sign up</div></a>
+                </div>
+                <div class="item ">
+                    <a href="/login"><div class="ui button"> Login </div></a>
+                </div>
+                <%  } else { %>
+                <div class="item right">
+                    Signed in as : <%=currentUser.username%>
+                </div>
+                <div class="item ">
+                    <a href="/logout"><div class="ui negative button">Logout</div></a>
+                </div>
+                <%  } %>
             </div>
         </div>
     

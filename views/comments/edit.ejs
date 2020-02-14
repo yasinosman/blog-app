@@ -2,13 +2,13 @@
 
 <div class="ui main text container segment">
     <div class="ui huge header">
-        Add a New Comment to <%=blog.title%>
+        Edit your comment on <%=blog.title%>
     </div>
 
-    <form class="ui form" action="/blogs/<%=blog._id%>/comments" method="POST">
+    <form class="ui form" action="/blogs/<%=blog._id%>/comments/<%=comment._id%>?_method=PUT" method="POST">
         <div class="field">
             <label>Your Comment:</label>
-            <textarea required name="comment[text]" placeholder="Your comment"></textarea>
+            <textarea required name="comment[text]"><%=comment.text%></textarea>
         </div>
         <input class="ui black basic button" type="submit">
     </form>
