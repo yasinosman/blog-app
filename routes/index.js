@@ -43,9 +43,10 @@ router.get("/login", function(req, res){
 router.post("/login", passport.authenticate("local", 
             {
                 successRedirect:"/blogs",
-                failureRedirect:"/login"
+                failureRedirect:"/login",
+                failureFlash: true,
+                successFlash: "Successfully logged in, " + req.body.username + "!"
             }), function(req, res){   
-                req.flash("success", "Successfully logged in");
 });
 
 //logout route (/logout), GET request, handles logout
