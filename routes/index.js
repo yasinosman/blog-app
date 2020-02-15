@@ -11,6 +11,15 @@ router.get("/", function(req, res){
     res.redirect("/blogs");
 });
 
+//policies route
+router.get("/policies", function(req, res){
+    res.render("../views/policies.ejs");
+});
+
+//privacy route
+router.get("privacy", function(req, res){
+    res.render("../views/privacy.ejs");
+});
 //AUTHENTICATION ROUTES
 //--------------------------------------------------
 //register route (/register), GET request, shows register form
