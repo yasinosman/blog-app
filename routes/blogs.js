@@ -10,19 +10,21 @@ var Comment = require("../models/comment"),
 //Middleware requirement
 var middleware = require("../middleware");
 
+
 //BLOG ROUTES  
 //--------------------------------------------------
 
 //index route ( /blogs, GET request, lists blogs)
 router.get("/blogs", function(req, res){
-    Blog.find({}, function(err, blogs){
-        if(err){
-            console.log("error!");
-        }
-        else {
-            res.render("./blogs/index.ejs", {blogs: blogs, currentUser:req.user});
-        }
-    });
+  
+        Blog.find({}, function(err, blogs){
+            if(err){
+                console.log("error!");
+            }
+            else {
+                res.render("./blogs/index.ejs", {blogs: blogs, currentUser:req.user});
+            }
+        });
 });
 
 //new route (/blogs/new, GET request, shows a form)
@@ -43,6 +45,8 @@ router.post("/blogs", middleware.isLoggedIn, function(req, res){
     //Create blog
     Blog.create(req.body.blog, function(err, createdBlog){
         if(err){
+            console.log(err);
+            req.flash("error", err);
             res.render("./blogs/new.ejs");
         } else {
             //Then, redirect to index page
@@ -96,7 +100,6 @@ router.delete("/blogs/:id", middleware.blogAuthorization, function(req, res){
 });
 //--------------------------------------------------
 //END OF BLOG ROUTES
-
 
 
 

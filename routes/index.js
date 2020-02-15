@@ -5,11 +5,16 @@ var express = require("express"),
 
 //Model requirements
 var User    = require("../models/user");
+    Blog    = require("../models/blog");
 
+//Search requirement
+var mongoose_fuzzy_searching = require("mongoose-fuzzy-searching-v2");
 //root route 
 router.get("/", function(req, res){
     res.redirect("/blogs");
 });
+
+
 
 //policies route
 router.get("/policies", function(req, res){
@@ -68,5 +73,19 @@ router.get("/logout", function(req, res){
 
 //--------------------------------------------------
 //END OF AUTHENTICATION ROUTES
+
+router.get("/search", function(req, res){
+    var searchText = req.query.search;
+    Blog.fuzzySearch({query: searchText}, function(err, foundBlogArray){
+        if(err || !foundBlogArray){
+            console.log(err);
+            req.flash("error", err);
+            res.redirect("back");
+        } else {
+            console.log(foundBlogArray);
+            res.redirect("/blogs/" + foundBlogArray[0]._id);
+        }
+    }); 
+});
 
 module.exports = router;

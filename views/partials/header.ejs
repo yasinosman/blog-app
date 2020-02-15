@@ -2,6 +2,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
         <link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
         <title>Blog App</title>
     </head>
@@ -14,20 +15,42 @@
                     </div>
                     <a href="/" class="item">Home</a>
                     <a href="/blogs/new" class="item">New Post</a>
-                    <a href="https://www.cydd.org.tr/" class="item" target="_blank">About ÇYDD</a>
+                    <a href="https://www.cydd.org.tr/" class="item" target="_blank">ÇYDD</a>
 
 <!--Authentication-->
                     <%  if(!currentUser){   %>
-                    <div class="item right">
+                        <div class="right menu" id="searchBar">
+                            <form class="item" action="/search" method="GET">
+                                <div class="ui  icon input">
+                                    <input placeholder="Search" name="search" type="text">
+                                    <button class="ui button"><i class="search icon"></i></button>
+                                    
+                                </div>
+                            </form>
+                        </div>
+
+                    <div class="item ">
                         <a href="/register"><div class="ui primary button">Sign up</div></a>
                     </div>
                     <div class="item ">
                         <a href="/login"><div class="ui button"> Login </div></a>
                     </div>
                     <%  } else { %>
-                    <div class="item right">
+                        
+                    <div class="item right" id="signedInAs">
                         Signed in as : <%=currentUser.username%>
                     </div>
+                    <div class=" menu" id="searchBar">
+                        <form class="item" action="/search" method="GET">
+                            <div class="ui  icon input">
+                                <input placeholder="Search" name="search" type="text">
+                                <button class="ui button"><i class="search icon"></i></button>
+                                
+                            </div>
+                        </form>
+                    </div>
+                    
+                    
                     <div class="item ">
                         <a href="/logout"><div class="ui negative button">Logout</div></a>
                     </div>

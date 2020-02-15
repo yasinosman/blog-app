@@ -52,9 +52,13 @@ app.use(function(req, res, next){
     next();
 });
 //Mongodb connection
-mongoose.connect( "mongodb+srv://yasinosman:123**saatkac123@blog-app-wx0nf.mongodb.net/test?retryWrites=true&w=majority",
-{ useNewUrlParser: true, useUnifiedTopology: true }, 
-() => { console.log("we are connected")}).catch(err => console.log(err));
+//Mongodb connection
+mongoose.connect("mongodb://localhost/cydd-kutuphane-app", 
+    {   
+        useNewUrlParser: true,
+        useUnifiedTopology: true 
+    }
+);
 
 //Routes
 app.use(commentRoutes);
@@ -62,6 +66,6 @@ app.use(indexRoutes);
 app.use(blogRoutes);
 
 //Express listener
-app.listen(process.env.PORT || 5000, process.env.IP, function(){
+app.listen(port, process.env.IP, function(){
     console.log(`Example app listening on port ${port}!`);
 });

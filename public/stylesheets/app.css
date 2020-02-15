@@ -48,3 +48,19 @@ body {
   margin-top:1em;
   margin-bottom:1em;
 }
+
+#searchBar{
+  margin-top:1.25em;
+  height:2em;
+}
+
+#mainBlogs{
+  background-color: whitesmoke;
+}
+
+#signedInAs{
+  margin-right:5px;
+  padding-right:5px;
+}
+
+
