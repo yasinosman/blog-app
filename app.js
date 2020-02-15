@@ -64,6 +64,10 @@ app.use(commentRoutes);
 app.use(indexRoutes);
 app.use(blogRoutes);
 
+//404 handler
+app.use(function (req, res) {
+    res.status(404).render('error');
+});
 //Express listener
 app.listen(process.env.PORT || 5000, process.env.IP, function(){
     console.log(`Example app listening on port ${port}!`);
