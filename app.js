@@ -4,6 +4,7 @@ var expressSanitizer = require("express-sanitizer"),
     expressSession   = require("express-session"),
     LocalStrategy    = require("passport-local"),
     bodyParser       = require("body-parser"),
+    flash            = require("connect-flash"),
     passport         = require("passport"),
     mongoose         = require("mongoose"),
     express          = require("express"),
@@ -21,6 +22,16 @@ var Comment          = require("./models/comment"),
 
 var port = 3000;
 
+//  App Config
+app.use(express.static("public"));
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(expressSanitizer());
+app.use(methodOverride("_method"));
+app.use(flash());
+
+//Seeding for working with new data every restart
+//seedDB();
+
 //  Passport config
 app.use(expressSession({
     secret:"En iyi yemek tavuklu pilavdir.",
@@ -36,22 +47,16 @@ passport.deserializeUser(User.deserializeUser());
 //For current user info
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
+    res.locals.error       = req.flash("error");
+    res.locals.success     = req.flash("success");  
     next();
 });
-
-//  App Config
-app.use(express.static("public"));
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(expressSanitizer());
-app.use(methodOverride("_method"));
-
-//Seeding for working with new data every restart
-//seedDB();
-
 //Mongodb connection
 mongoose.connect( "mongodb+srv://yasinosman:123**saatkac123@blog-app-wx0nf.mongodb.net/test?retryWrites=true&w=majority",
 { useNewUrlParser: true, useUnifiedTopology: true }, 
 () => { console.log("we are connected")}).catch(err => console.log(err));
+
+
 
 //Routes
 app.use(commentRoutes);

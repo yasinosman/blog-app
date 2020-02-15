@@ -34,6 +34,7 @@ router.post("/blogs/:id/comments", middleware.isLoggedIn, function(req, res){
             //create a new comment
             Comment.create(req.body.comment, function(err, comment){
                 if(err){
+                    req.flash("error", "Something went wrong");
                     console.log(err);
                 } else {
                     //add username and id to comment
@@ -45,6 +46,7 @@ router.post("/blogs/:id/comments", middleware.isLoggedIn, function(req, res){
                     blog.comments.push(comment);
                     blog.save();
                     //redirect to blog show page
+                    req.flash("success", "Comment added successfully");
                     res.redirect("/blogs/" + blog._id);
                 }
             });  
@@ -55,13 +57,15 @@ router.post("/blogs/:id/comments", middleware.isLoggedIn, function(req, res){
 //edit route (/blogs/:id/comments/:comment_id/edit), GET request, shows comment edit form
 router.get("/blogs/:id/comments/:comment_id/edit", middleware.commentAuthorization, function(req, res){
     Blog.findById(req.params.id, function(err, foundBlog){
-        if(err){
+        if(err || !foundBlog){
             console.log(err);
+            req.flash("error", "Blog not found");
             res.redirect("back");
         } else {
             Comment.findById(req.params.comment_id, function(err, foundComment){
-                if(err){
+                if(err || !foundComment){
                     console.log(err);
+                    req.flash("error", "Comment not found");
                     res.redirect("back");
                 } else {
                     res.render("../views/comments/edit.ejs",
@@ -78,8 +82,9 @@ router.get("/blogs/:id/comments/:comment_id/edit", middleware.commentAuthorizati
 //update route (/blogs/:id/comments/:comment_id), PUT request, handles comment updating
 router.put("/blogs/:id/comments/:comment_id", middleware.commentAuthorization, function(req, res){
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
-        if(err){
-            console.log(err)
+        if(err || !updatedComment){
+            console.log(err);
+            req.flash("error", "Comment not found");
             res.redirect("back");
         } else {
             res.redirect("/blogs/" + req.params.id);
@@ -94,6 +99,7 @@ router.delete("/blogs/:id/comments/:comment_id", middleware.commentAuthorization
             console.log(err);
             res.redirect("back");
         } else {
+            req.flash("success", "Comment deleted");
             res.redirect("/blogs/" + req.params.id);
         }
     });

@@ -54,7 +54,8 @@ router.post("/blogs", middleware.isLoggedIn, function(req, res){
 //show route (/blogs/:id, GET request, shows a single blog post)
 router.get("/blogs/:id", function(req, res){
     Blog.findById(req.params.id).populate("comments").exec(function(err, foundBlog){
-        if(err){
+        if(err || !foundBlog){
+            req.flash("error", "Blog not found");
             res.redirect("/blogs");
         } else {
             res.render("./blogs/show.ejs", {blog: foundBlog});

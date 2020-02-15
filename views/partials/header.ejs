@@ -14,7 +14,7 @@
                 <a href="/" class="item">Home</a>
                 <a href="/blogs/new" class="item">New Post</a>
                 
-<!--Authentication part-->
+<!--Authentication-->
                 <%  if(!currentUser){   %>
                 <div class="item right">
                     <a href="/register"><div class="ui primary button">Sign up</div></a>
@@ -32,4 +32,27 @@
                 <%  } %>
             </div>
         </div>
-    
+
+<!--Flash messages-->
+    <div class="ui main text container">
+        <% if(error && error.length > 0){ %>
+        <div class="ui floating negative message">
+            <div class="header">
+                BlogSite.com: 
+            </div>
+            <p><%=error%></p>
+        </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+        <div class="ui floating positive message">
+            <div class="header">
+                BlogSite.com: 
+            </div>
+            <p><%=success%></p>
+        </div>
+        <% } %>
+    </div>
+
+        
+        
+       
