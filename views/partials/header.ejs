@@ -36,24 +36,23 @@
                         <a href="/login"><div class="ui button"> Login </div></a>
                     </div>
                     <%  } else { %>
+                    
+                        <div class="right menu" id="searchBar">
+                            <form class="item" action="/search" method="GET">
+                                <div class="ui  icon input">
+                                    <input placeholder="Search" name="search" type="text">
+                                    <button class="ui button"><i class="search icon"></i></button>
+                                </div>
+                            </form>
+                        </div>
                         
-                    <div class="item right" id="signedInAs">
-                        Signed in as : <%=currentUser.username%>
-                    </div>
-                    <div class=" menu" id="searchBar">
-                        <form class="item" action="/search" method="GET">
-                            <div class="ui  icon input">
-                                <input placeholder="Search" name="search" type="text">
-                                <button class="ui button"><i class="search icon"></i></button>
-                                
-                            </div>
-                        </form>
-                    </div>
-                    
-                    
-                    <div class="item ">
-                        <a href="/logout"><div class="ui negative button">Logout</div></a>
-                    </div>
+                        <div class="item " id="signedInAs">
+                            Signed in as : <%=currentUser.username%>
+                        </div>
+                        
+                        <div class="item ">
+                            <a href="/logout"><div class="ui negative button">Logout</div></a>
+                        </div>
                     <%  } %>
                 </div>
             </div>
