@@ -90,7 +90,7 @@ router.get("/search", function(req, res){
 });
 
 //star route
-router.get("/*", function(req, res){
+router.get("*", function(req, res){
     res.render("../views/404.ejs");
 });
 
