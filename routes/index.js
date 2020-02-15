@@ -17,7 +17,7 @@ router.get("/policies", function(req, res){
 });
 
 //privacy route
-router.get("privacy", function(req, res){
+router.get("/privacy", function(req, res){
     res.render("../views/privacy.ejs");
 });
 //AUTHENTICATION ROUTES
