@@ -25,6 +25,7 @@ router.get("/policies", function(req, res){
 router.get("/privacy", function(req, res){
     res.render("../views/privacy.ejs");
 });
+
 //AUTHENTICATION ROUTES
 //--------------------------------------------------
 //register route (/register), GET request, shows register form
@@ -86,6 +87,11 @@ router.get("/search", function(req, res){
             res.redirect("/blogs/" + foundBlogArray[0]._id);
         }
     }); 
+});
+
+//star route
+router.get("/*", function(req, res){
+    res.render("../views/404.ejs");
 });
 
 module.exports = router;
