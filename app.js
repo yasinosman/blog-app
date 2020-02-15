@@ -56,8 +56,6 @@ mongoose.connect( "mongodb+srv://yasinosman:123**saatkac123@blog-app-wx0nf.mongo
 { useNewUrlParser: true, useUnifiedTopology: true }, 
 () => { console.log("we are connected")}).catch(err => console.log(err));
 
-
-
 //Routes
 app.use(commentRoutes);
 app.use(indexRoutes);

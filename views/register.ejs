@@ -1,9 +1,25 @@
 <%- include("./partials/header") %>
-<h1>REGISTER PAGE</h1>
 
-<form action="/register" method="POST">
-    <input type="text" name="username" placeholder="Username">
-    <input type="password" name="password" placeholder="Password">
-    <button>Submit</button>
-</form>
+<div class="ui main  text container segment">
+    <h1 class="header">Sign Up</h1>
+    <form class="ui form" action="/register" method="POST">
+        <div class="field">
+          <label>Username</label>
+          <input type="text" name="username" placeholder="Username">
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" name="password" placeholder="Password">
+        </div>
+        <div class="field">
+          <div class="ui checkbox">
+            
+            <input type="checkbox" tabindex="0" class="hidden">
+            <label><a href="#">Kullanım Koşulları</a> ve <a href="#">Gizlilik Politikası</a>'nı okudum ve kabul ediyorum. </label>
+          </div>
+        </div>
+        <button class="ui button" type="submit">Submit</button>
+      </form>
+</div>
+
 <%- include("./partials/footer") %>

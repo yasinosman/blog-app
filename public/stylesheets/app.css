@@ -17,3 +17,34 @@ body {
 #commentDelete{
     display:inline;
 }
+
+.Site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  
+.Site-content {
+    flex: 1;
+}
+
+#cydd-logo{
+  display:inline;
+}
+
+#about{
+  display:block;
+}
+
+#left-links{
+  margin-top:1em;
+}
+
+#right-links{
+  margin-top:2em;
+}
+
+#footer-bottom{
+  margin-top:1em;
+  margin-bottom:1em;
+}

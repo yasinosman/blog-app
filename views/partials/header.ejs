@@ -5,53 +5,54 @@
 
         <title>Blog App</title>
     </head>
-    <body>
-        <div class="ui fixed inverted menu">
-            <div class="ui container">
-                <div class ="header item"><i class="big book icon"></i> 
-                    <a href="/blogs">Blog Site</a>
-                </div>
-                <a href="/" class="item">Home</a>
-                <a href="/blogs/new" class="item">New Post</a>
-                
+    <body class="Site">
+        <main class="Site-content">
+            <div class="ui fixed inverted menu">
+                <div class="ui container">
+                    <div class ="header item"><i class="big book icon"></i> 
+                        <a href="/blogs">Blog Site</a>
+                    </div>
+                    <a href="/" class="item">Home</a>
+                    <a href="/blogs/new" class="item">New Post</a>
+
 <!--Authentication-->
-                <%  if(!currentUser){   %>
-                <div class="item right">
-                    <a href="/register"><div class="ui primary button">Sign up</div></a>
+                    <%  if(!currentUser){   %>
+                    <div class="item right">
+                        <a href="/register"><div class="ui primary button">Sign up</div></a>
+                    </div>
+                    <div class="item ">
+                        <a href="/login"><div class="ui button"> Login </div></a>
+                    </div>
+                    <%  } else { %>
+                    <div class="item right">
+                        Signed in as : <%=currentUser.username%>
+                    </div>
+                    <div class="item ">
+                        <a href="/logout"><div class="ui negative button">Logout</div></a>
+                    </div>
+                    <%  } %>
                 </div>
-                <div class="item ">
-                    <a href="/login"><div class="ui button"> Login </div></a>
-                </div>
-                <%  } else { %>
-                <div class="item right">
-                    Signed in as : <%=currentUser.username%>
-                </div>
-                <div class="item ">
-                    <a href="/logout"><div class="ui negative button">Logout</div></a>
-                </div>
-                <%  } %>
             </div>
-        </div>
 
 <!--Flash messages-->
-    <div class="ui main text container">
-        <% if(error && error.length > 0){ %>
-        <div class="ui floating negative message">
-            <div class="header">
-                BlogSite.com: 
+        <div class="ui main text container">
+            <% if(error && error.length > 0){ %>
+            <div class="ui floating negative message">
+                <div class="header">
+                    BlogSite.com: 
+                </div>
+                <p><%=error%></p>
             </div>
-            <p><%=error%></p>
-        </div>
-        <% } %>
-        <% if(success && success.length > 0){ %>
-        <div class="ui floating positive message">
-            <div class="header">
-                BlogSite.com: 
+            <% } %>
+            <% if(success && success.length > 0){ %>
+            <div class="ui floating positive message">
+                <div class="header">
+                    BlogSite.com: 
+                </div>
+                <p><%=success%></p>
             </div>
-            <p><%=success%></p>
+            <% } %>
         </div>
-        <% } %>
-    </div>
 
         
         
