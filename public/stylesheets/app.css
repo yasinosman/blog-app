@@ -63,4 +63,41 @@ body {
   padding-right:5px;
 }
 
+@media only screen and (max-width: 600px) {
+  #signUpBUtton{
+    margin-top:1em;;
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  
+  #signUpButton{
+    margin-top: 1em;
+  }
+  
+  .ui.input>input{
+    max-width:25%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px){
+  #topBar{
+    margin-left:0.1em;
+  }
+  .ui.input>input{
+    max-width:1em;
+    width:0.5em;
+    margin-right:01.em;
+  }
+}
+
 

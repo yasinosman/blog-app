@@ -25,7 +25,6 @@ router.get("/policies", function(req, res){
 router.get("/privacy", function(req, res){
     res.render("../views/privacy.ejs");
 });
-
 //AUTHENTICATION ROUTES
 //--------------------------------------------------
 //register route (/register), GET request, shows register form
@@ -77,24 +76,30 @@ router.get("/logout", function(req, res){
 
 router.get("/search", function(req, res){
     var searchText = req.query.search;
-    Blog.fuzzySearch({query: searchText}, function(err, foundBlogArray){
-        if(err || !foundBlogArray){
-            console.log(err);
-            req.flash("error", err);
-            res.redirect("back");
-        } else {
-            console.log(foundBlogArray);
-            res.redirect("/blogs/" + foundBlogArray[0]._id);
-        }
-    }); 
+    if(searchText==null || searchText==undefined){
+        req.flash("err", "Invalid search parameters");
+        return res.redirect("/blogs");
+    } else {
+        Blog.fuzzySearch({query: searchText}, function(err, foundBlogArray){
+            if(err){
+                console.log(err);
+                req.flash("error", err);
+                return res.redirect("/blogs");
+            } else {
+                if (Array.isArray(foundBlogArray) && foundBlogArray.length){
+                    res.render("./blogs/index.ejs", 
+                    {
+                        blogs: foundBlogArray, 
+                        currentUser:req.user,
+                        searchText:searchText
+                    });
+                } else {
+                    req.flash("error", "We couldn't find any matching blogs with your search parameter");
+                    res.redirect("/blogs");
+                }     
+            }
+        }); 
+    }
 });
-
-/*
-//star route
-router.get("*", function(req, res){
-    res.render("../views/404.ejs");
-});*/
-
-
 
 module.exports = router;

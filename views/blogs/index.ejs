@@ -1,7 +1,11 @@
 <%- include("./../partials/header") %>
 
 <div class="ui main text container" id="mainBlogs">
-    <div class="ui huge header"><h1>Blogs</h1></div>
+    <%  if(!searchText){ %>
+    <div class="ui huge header"><h1>Blogs </h1></div>
+    <%  } else { %>
+    <div class="ui huge header"><h1>Showing results for : <%=searchText%></h1></div>
+    <%  }   %>
     <div class="ui top attached segment">
         <div class="ui divided items">
             <% blogs.forEach(function(blog){ %>

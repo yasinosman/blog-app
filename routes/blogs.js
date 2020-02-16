@@ -17,12 +17,17 @@ var middleware = require("../middleware");
 //index route ( /blogs, GET request, lists blogs)
 router.get("/blogs", function(req, res){
   
-        Blog.find({}, function(err, blogs){
+        Blog.find({}, function(err, foundBlogs){
             if(err){
                 console.log("error!");
             }
             else {
-                res.render("./blogs/index.ejs", {blogs: blogs, currentUser:req.user});
+                res.render("./blogs/index.ejs", 
+                {
+                    blogs: foundBlogs, 
+                    currentUser:req.user,
+                    searchText:null
+                });
             }
         });
 });
@@ -100,6 +105,7 @@ router.delete("/blogs/:id", middleware.blogAuthorization, function(req, res){
 });
 //--------------------------------------------------
 //END OF BLOG ROUTES
+
 
 
 

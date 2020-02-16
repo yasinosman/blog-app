@@ -8,9 +8,10 @@
     </head>
     <body class="Site">
         <main class="Site-content">
-            <div class="ui fixed inverted menu">
-                <div class="ui container">
-                    <div class ="header item"><i class="big book icon"></i> 
+            <div class="ui centered grid" id="topBar">
+            <div class="ui fixed inverted compact stackable menu">
+                <div class="ui container" id="topNavBar">
+                    <div class ="header item "><i class="big book icon"></i> 
                         <a href="/blogs">Blog Site</a>
                     </div>
                     <a href="/" class="item">Home</a>
@@ -29,7 +30,7 @@
                             </form>
                         </div>
 
-                    <div class="item ">
+                    <div class="item " id="signUpButton">
                         <a href="/register"><div class="ui primary button">Sign up</div></a>
                     </div>
                     <div class="item ">
@@ -37,22 +38,22 @@
                     </div>
                     <%  } else { %>
                     
-                        <div class="right menu" id="searchBar">
-                            <form class="item" action="/search" method="GET">
-                                <div class="ui  icon input">
-                                    <input placeholder="Search" name="search" type="text">
-                                    <button class="ui button"><i class="search icon"></i></button>
-                                </div>
-                            </form>
-                        </div>
-                        
-                        <div class="item " id="signedInAs">
-                            Signed in as : <%=currentUser.username%>
-                        </div>
-                        
-                        <div class="item ">
-                            <a href="/logout"><div class="ui negative button">Logout</div></a>
-                        </div>
+                    <div class="right menu" id="searchBar">
+                        <form class="item" action="/search" method="GET">
+                            <div class="ui  icon input">
+                                <input placeholder="Search" name="search" type="text">
+                                <button class="ui button"><i class="search icon"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="item " id="signedInAs">
+                        Signed in as : <%=currentUser.username%>
+                    </div>
+                    
+                    <div class="item ">
+                        <a href="/logout"><div class="ui negative button">Logout</div></a>
+                    </div>
                     <%  } %>
                 </div>
             </div>
@@ -76,6 +77,8 @@
             </div>
             <% } %>
         </div>
+        </div>
+    
 
         
         
