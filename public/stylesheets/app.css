@@ -84,7 +84,7 @@ body {
     margin-top: 1em;
   }
   
-  .ui.input>input{
+  .right.menu#searchBar{
     max-width:25%;
   }
 }
