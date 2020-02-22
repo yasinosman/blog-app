@@ -34,7 +34,7 @@ app.use(flash());
 
 //  Passport config
 app.use(expressSession({
-    secret:"En iyi yemek tavuklu pilavdir.",
+    secret:"<secretkey>",
     resave:false,
     saveUninitialized: false
 }));
@@ -52,7 +52,7 @@ app.use(function(req, res, next){
     next();
 });
 //Mongodb connection
-mongoose.connect( "mongodb+srv://yasinosman:123**saatkac123@blog-app-wx0nf.mongodb.net/test?retryWrites=true&w=majority",
+mongoose.connect( "mongodb+srv://<username>:<password>@blog-app-wx0nf.mongodb.net/test?retryWrites=true&w=majority",
 { useNewUrlParser: true, useUnifiedTopology: true }, 
 () => { console.log("we are connected")}).catch(err => console.log(err));
 
