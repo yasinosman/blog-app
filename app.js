@@ -20,7 +20,8 @@ var Comment          = require("./models/comment"),
 //For seeding database
 //var seedDB           = require("./seeds");
 
-var port = 3000;
+require('dotenv').config()
+var port = process.env.PORT || 3000;
 
 //  App Config
 app.use(express.static("public"));
@@ -52,9 +53,9 @@ app.use(function(req, res, next){
     next();
 });
 //Mongodb connection
-mongoose.connect( "mongodb+srv://<username>:<password>@blog-app-wx0nf.mongodb.net/test?retryWrites=true&w=majority",
+mongoose.connect( process.env.DATABASE_URI,
 { useNewUrlParser: true, useUnifiedTopology: true }, 
-() => { console.log("we are connected")}).catch(err => console.log(err));
+() => { console.log("database connected")}).catch(err => console.log(err));
 
 //Routes
 app.use(commentRoutes);
@@ -62,6 +63,6 @@ app.use(indexRoutes);
 app.use(blogRoutes);
 
 //Express listener
-app.listen(process.env.PORT || 5000, process.env.IP, function(){
-    console.log(`Example app listening on port ${port}!`);
+app.listen(port, function(){
+    console.log(` > Server started on port ${port}!`);
 });
